@@ -1,4 +1,5 @@
-import 'package:app/custom_icons.dart';
+import 'package:app/config/palette.dart';
+import 'package:app/config/custom_icons.dart';
 import 'package:app/pages/account/account.dart';
 import 'package:app/pages/training/training.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +49,9 @@ class _NavigationState extends State<Navigation> {
           ),
         ],
         currentIndex: pageIndex,
-        selectedItemColor: Colors.amber[800],
+        unselectedItemColor: Palette.black,
+        backgroundColor: Palette.light,
+        selectedItemColor: Palette.secondary,
         onTap: _onItemTapped,
       ),
     );

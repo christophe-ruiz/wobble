@@ -6,7 +6,7 @@ Wobble is a simple application dedicated to track your fitness journey.
 Flutter
 
 ### Back-end
-Java Spring, MongoDB, SonarQube
+Node.js, Firebase, SonarQube
 
 ### DevOps
 Docker, Kubernetes

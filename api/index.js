@@ -22,12 +22,6 @@ routes.accounts = require('./routes/accounts');
     app.use(bodyParser.json({limit: '100mb'}))
     app.use(bodyParser.urlencoded({extended: true, limit: '100mb'}));
     app.use(morgan('[:date[iso]] :method :url :status :response-time ms - :res[content-length]'))
-    // app.use(fileUpload({
-    //     createParentPath: true,
-    //     limits: {
-    //         fileSize: 2 * (1024 ** 3)
-    //     },
-    // }));
     app.get('/ping', (req, res) => res.status(200).send('pong'))
     app.use('/accounts', routes.accounts)
     app.use('*', (req, res) => res.status(404).end())

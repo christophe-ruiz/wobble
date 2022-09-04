@@ -13,9 +13,9 @@ router.get('/', async (req, res) => {
     res.status(200).json(await AccountModel.find()).end();
 })
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', accountVersionManager, async (req, res) => {
     try {
-        const account = await AccountModel.findById(req.params.id);
+        const account = await AccountModel.findById(req.params.id).then();
         if (account) res.status(200).json(account).end();
         else res.status(404).json({
             err: "Account not found",
@@ -50,6 +50,12 @@ router.get('/:id/avi', (req, res) => {
 
 router.post('/', (req, res) => {
     const account = new AccountModel(req.body);
+    account.joined = account.id.getTimestamp();
+    account.certified = false;
+    account.admin = false;
+    account.bio = account.bio ?? "Hello there, I am a Wobbler ! 👋"
+    account.schemaVersion = process.env.ACCOUNT_VERSION;
+
     account.save().then(() => {
         res.status(200).json(account);
     }, (err) => res.status(500).json({
@@ -57,5 +63,20 @@ router.post('/', (req, res) => {
         reason: err
     }));
 })
+
+// router.delete('/:id', async (req, res) => {
+//     try {
+//         const account = await AccountModel.deleteOne(req.params.id).then();
+//         if (account) res.status(200).json(account).end();
+//         else res.status(404).json({
+//             err: "Account not found",
+//         }).end();
+//     } catch (e) {
+//         res.status(500).json({
+//             err: "Couldn't get account",
+//             reason: e
+//         });
+//     }
+// })
 
 module.exports = router;

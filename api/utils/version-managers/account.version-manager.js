@@ -10,6 +10,7 @@ module.exports = async (req, res, next) => {
             await account.save();
             next();
         }
+        next();
     } catch (e) {
         res.status(500).json({
             err: "Couldn't check account version",

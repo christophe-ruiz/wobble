@@ -2,6 +2,7 @@ import 'package:app/config/palette.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:app/config/server.config.dart';
 
 import '../../models/wobble.notifier.dart';
 
@@ -13,20 +14,33 @@ class AccountInformation extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.network(
-              "http://localhost:4124/accounts/63025b068d7229afe048b2b0/avi",
-              width: 120,
-              height: 120,
-              fit: BoxFit.cover,
+        Stack(
+          clipBehavior: Clip.none,
+          children: [
+            ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(
+                  "${Server.endpoint}accounts/${context.watch<WobbleNotifier>().account?.id}/avi",
+                  width: 120,
+                  height: 120,
+                  fit: BoxFit.cover,
+                )
+            ),
+            Positioned(
+                top: -13,
+                right: -13,
+                child: Image.asset(
+                  'assets/img/certified.png',
+                  height: 35,
+                )
             )
+          ],
         ),
         Padding(
-          padding: EdgeInsets.only(top: 10),
+          padding: const EdgeInsets.only(top: 10),
           child:
           Text(
-            context.watch<WobbleNotifier>().account?.displayname ?? "Utilisateur",
+            context.watch<WobbleNotifier>().account?.displayname ?? "Wobbler",
             style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
@@ -61,29 +75,6 @@ class AccountInformation extends StatelessWidget {
                     style: Theme.of(context).textTheme.labelSmall
                 )
             )
-        )
-      ],
-    );
-  }
-
-  old (BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  const Icon(Icons.person),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 20.0),
-                    child: Text(context.watch<WobbleNotifier>().account?.username ?? "user"),
-                  ),
-                ]
-            )
-        ),
-        OutlinedButton(
-            onPressed: null,
-            child: Text(AppLocalizations.of(context)!.editProfile)
         )
       ],
     );

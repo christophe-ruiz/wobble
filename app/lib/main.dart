@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
           primaryColor: Palette.primary,
           textTheme: GoogleFonts.notoSansTextTheme(Theme.of(context).textTheme).copyWith(
             bodySmall: GoogleFonts.notoSans(
-                fontSize: 12,
+                fontSize: 10,
                 color: Palette.grey,
                 fontWeight: FontWeight.normal
             ),
@@ -51,7 +51,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold
             ),
             bodyMedium: GoogleFonts.notoSans(
-              fontSize: 16,
+              fontSize: 14,
               color: Palette.black,
               fontWeight: FontWeight.normal
             ),

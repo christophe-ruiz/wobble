@@ -1,8 +1,8 @@
 import 'package:app/models/wobble.notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../widgets/account/account.panel.dart';
+import '../../widgets/account/dashboard.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({Key? key}) : super(key: key);
@@ -15,8 +15,9 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      children: const [
-        AccountPanel()
+      children: [
+        const AccountPanel(),
+        const Dashboard(),
       ],
     );
   }

@@ -9,6 +9,7 @@ class AccountRequests {
 
   static Future<Account> getAccount(String id) async {
     final res = await http.get(Uri.parse(Server.endpoint + _route + id));
+    print(res.body);
     if (res.statusCode == 200) {
       return Account.fromJson(jsonDecode(res.body));
     } else {

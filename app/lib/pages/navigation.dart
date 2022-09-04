@@ -56,9 +56,9 @@ class _NavigationState extends State<Navigation> {
           ),
         ],
         currentIndex: pageIndex,
-        unselectedItemColor: Palette.black,
+        unselectedItemColor: Palette.grey,
         backgroundColor: Palette.light,
-        selectedItemColor: Palette.secondary,
+        selectedItemColor: Palette.primary,
         onTap: _onItemTapped,
       ),
     );

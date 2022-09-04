@@ -8,5 +8,9 @@
   "followers" : "Abonnés",
   "following_plural" : "Abonnements",
   "follower" : "Abonné",
-  "following" : "Abonnement"
+  "following" : "Abonnement",
+  "statistics" : "Statistiques",
+  "exercises" : "Exercices",
+  "measurements" : "Mesures",
+  "calendar" : "Calendrier"
 }

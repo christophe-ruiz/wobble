@@ -1,9 +1,11 @@
 import 'package:app/config/palette.dart';
 import 'package:app/config/custom_icons.dart';
-import 'package:app/pages/account/account.dart';
-import 'package:app/pages/training/training.dart';
+import 'package:app/models/wobble.notifier.dart';
+import 'package:app/pages/account/account.page.dart';
+import 'package:app/pages/training/training.page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({Key? key}) : super(key: key);
@@ -13,7 +15,7 @@ class Navigation extends StatefulWidget {
 }
 
 class _NavigationState extends State<Navigation> {
-  int pageIndex = 0;
+  int pageIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -34,13 +36,18 @@ class _NavigationState extends State<Navigation> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: pages.elementAt(pageIndex),
+      body: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(create: (context) => WobbleNotifier())
+          ],
+          child: Center(
+            child: pages.elementAt(pageIndex),
+          )
       ),
       bottomNavigationBar: BottomNavigationBar(
         items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-              icon: const Icon(Icons.sports),
+              icon: const Icon(Icons.sports_rounded),
               label: AppLocalizations.of(context)!.trainingTitle
           ),
           BottomNavigationBarItem(

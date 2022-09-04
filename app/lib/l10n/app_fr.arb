@@ -1,5 +1,12 @@
 {
   "helloWorld": "Bonjour, Monde!",
   "accountTitle": "Compte",
-  "trainingTitle": "Entraînement"
+  "trainingTitle": "Entraînement",
+  "editProfile" : "Modifier le profil",
+  "workouts" : "Entraînements",
+  "workout" : "Entraînement",
+  "followers" : "Abonnés",
+  "following_plural" : "Abonnements",
+  "follower" : "Abonné",
+  "following" : "Abonnement"
 }

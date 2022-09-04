@@ -1,8 +1,19 @@
-import 'package:app/pages/navigator.dart';
+import 'package:app/config/palette.dart';
+import 'package:app/pages/navigation.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
+  GoogleFonts.config.allowRuntimeFetching = true;
+
+  LicenseRegistry.addLicense(() async* {
+    final license = await rootBundle.loadString('google_fonts/Noto_Sans/OFL.txt');
+    yield LicenseEntryWithLineBreaks(['google_fonts'], license);
+  });
+
   runApp(const MyApp());
 }
 
@@ -17,16 +28,39 @@ class MyApp extends StatelessWidget {
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+          primaryColor: Palette.primary,
+          textTheme: GoogleFonts.notoSansTextTheme(Theme.of(context).textTheme).copyWith(
+            bodySmall: GoogleFonts.notoSans(
+                fontSize: 12,
+                color: Palette.grey,
+                fontWeight: FontWeight.normal
+            ),
+            displaySmall: GoogleFonts.notoSans(
+              fontSize: 24,
+              color: Palette.black,
+              fontWeight: FontWeight.bold,
+            ),
+            titleLarge: GoogleFonts.notoSans(
+              fontSize: 45,
+              color: Palette.black,
+              fontWeight: FontWeight.bold
+            ),
+            titleSmall: GoogleFonts.notoSans(
+              fontSize: 16,
+              color: Palette.primary,
+              fontWeight: FontWeight.bold
+            ),
+            bodyMedium: GoogleFonts.notoSans(
+              fontSize: 16,
+              color: Palette.black,
+              fontWeight: FontWeight.normal
+            ),
+            labelSmall: GoogleFonts.notoSans(
+              fontSize: 16,
+              color: Palette.black,
+              fontWeight: FontWeight.bold
+            )
+          )
       ),
       home: const Navigation(),
     );

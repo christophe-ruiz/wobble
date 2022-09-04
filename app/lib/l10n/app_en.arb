@@ -1,5 +1,12 @@
 {
     "helloWorld": "Hello, World!",
     "accountTitle": "Account",
-    "trainingTitle": "Training"
+    "trainingTitle": "Training",
+    "editProfile" : "Edit profile",
+    "workouts" : "Workouts",
+    "workout" : "Workout",
+    "followers" : "Followers",
+    "following_plural" : "Following",
+    "follower" : "Follower",
+    "following" : "Following"
 }
